@@ -2,35 +2,51 @@ package edu.kis.vh.nursery;
 
 public class DefaultCountingOutRhymer {
 
-	public static final int RETVAL = -1;
-	public static final int EMPTY_RHYMER_FLAG = -1;
-	public static final int MAX_NUMBERS_COUNT = 12;
-	private final int[] numbers = new int[MAX_NUMBERS_COUNT];
+	private static final int RETVAL = -1;
+	private static final int EMPTY_RHYMER_FLAG = -1;
+	private static final int MAX_NUMBERS_COUNT = 12;
+	private final int[] numbers = new int[getMaxNumbersCount()];
 
-	public int total = EMPTY_RHYMER_FLAG;
+	public static int getRETVAL() {
+		return RETVAL;
+	}
 
-	public void countIn(int in) {
+	public static int getEmptyRhymerFlag() {
+		return EMPTY_RHYMER_FLAG;
+	}
+
+	public static int getMaxNumbersCount() {
+		return MAX_NUMBERS_COUNT;
+	}
+
+	protected int getTotal() {
+		return total;
+	}
+
+	protected int total = getEmptyRhymerFlag();
+
+	protected void countIn(int in) {
 		if (!isFull())
 			numbers[++total] = in;
 	}
 
-		public boolean callCheck() {
-			return total == EMPTY_RHYMER_FLAG;
+	protected boolean callCheck() {
+			return total == getEmptyRhymerFlag();
 		}
-		
-			public boolean isFull() {
-				return total == MAX_NUMBERS_COUNT-1;
+
+			protected boolean isFull() {
+				return total == getMaxNumbersCount() -1;
 			}
 		
 				protected int peekaboo() {
 					if (callCheck())
-						return RETVAL;
+						return getRETVAL();
 					return numbers[total];
 				}
-			
-					public int countOut() {
+
+					protected int countOut() {
 						if (callCheck())
-							return RETVAL;
+							return getRETVAL();
 						return numbers[total--];
 					}
 
