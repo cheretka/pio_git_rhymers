@@ -1,10 +1,11 @@
-package edu.kis.vh.nursery.list;
+package edu.kis.vh.nursery.IntStosTypes;
 
-public class IntLinkedList {
+import edu.kis.vh.nursery.IntStos;
+
+public class IntLinkedList implements IntStos {
 
 	Node last;
 	int i;
-	public static final int DEFAULT_VALUE = -1;
 
 
 	public void push(int i) {
@@ -27,13 +28,13 @@ public class IntLinkedList {
 
 	public int top() {
 		if (isEmpty())
-			return DEFAULT_VALUE;
+			return RETVAL;
 		return last.value;
 	}
 
 	public int pop() {
 		if (isEmpty())
-			return DEFAULT_VALUE;
+			return RETVAL;
 		int ret = last.value;
 		last = last.prev;
 		return ret;
